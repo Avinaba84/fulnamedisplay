@@ -5,18 +5,11 @@ const DisplayName = () => {
   const [lastname, setLastname] = useState("");
   const [fullName, setFullName] = useState("");
 
-  // Only allow letters and spaces
-  const isValidName = (name) => /^[a-zA-Z\s]+$/.test(name);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!firstname.trim() || !lastname.trim()) {
-      setFullName("");
-      return;
-    }
-
-    if (!isValidName(firstname) || !isValidName(lastname)) {
       setFullName("");
       return;
     }
