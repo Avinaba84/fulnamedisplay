@@ -4,7 +4,6 @@ const DisplayName = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [fullName, setFullName] = useState("");
-  const [error, setError] = useState("");
 
   // Only allow letters and spaces
   const isValidName = (name) => /^[a-zA-Z\s]+$/.test(name);
@@ -14,23 +13,20 @@ const DisplayName = () => {
 
     if (!firstname.trim() || !lastname.trim()) {
       setFullName("");
-      setError("Both first and last name are required.");
       return;
     }
 
     if (!isValidName(firstname) || !isValidName(lastname)) {
       setFullName("");
-      setError("Names can only contain letters and spaces (no numbers or special characters).");
       return;
     }
 
     setFullName(`${firstname.trim()} ${lastname.trim()}`);
-    setError("");
   };
 
   return (
     <div>
-      <h1>Full Display Name</h1>
+      <h1>Full Name Display</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <h5>
@@ -62,13 +58,6 @@ const DisplayName = () => {
           <button type="submit">Submit</button>
         </span>
       </form>
-
-      {/* Show error message if any */}
-      {error && (
-        <p style={{ color: "red", marginTop: "10px" }}>
-          {error}
-        </p>
-      )}
 
       {/* Only show full name when valid */}
       {fullName && (
